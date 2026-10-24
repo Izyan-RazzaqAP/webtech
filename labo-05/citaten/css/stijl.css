@@ -1,0 +1,81 @@
+/* stijl.css - labo 5, citaten (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+--blauw: #1e5bd8;
+--roze:#e88bb4;
+--rood: #c51f2a;
+--oranje: #d98c1a;
+--groen: #3b7a2a;
+--salie:#8fb89a;
+--paars: #7b4fa3;
+--grijs:#6b6b6b;
+}
+
+/* === your rules === */
+
+.citaten
+{
+    display:flex;
+    flex-wrap:wrap;  
+    gap:1.5rem;
+    padding:2rem;
+}
+.citaat
+{
+    flex-basis: 18rem;
+    flex-grow:1;
+    font-family: Verdana;
+    padding-left:1rem;
+}
+.citaat p
+{
+    font-weight: bold;
+    font-size: 1.5;    
+    margin-bottom: 1rem;
+}
+.cite
+{
+    font-size:0.875rem;
+}
+.blauw
+{
+color: var(--blauw);
+border-left: 0.5rem solid var(--blauw);
+}
+.roze
+{
+color: var(--roze);
+border-left: 0.5rem solid var(--roze);
+}
+.rood
+{
+color: var(--rood);
+border-left: 0.5rem solid var(--rood);
+}
+.oranje
+{
+color: var(--oranje);
+border-left: 0.5rem solid var(--oranje);
+}
+.groen
+{
+color: var(--groen);
+border-left: 0.5rem solid var(--groen);
+}
+.salie
+{
+color: var(--salie);
+border-left: 0.5rem solid var(--salie);
+}
+.paars
+{
+color: var(--paars);
+border-left: 0.5rem solid var(--paars);
+}
+.grijs
+{
+    color: var(--grijs);
+    border-left: 0.5rem solid var(--grijs);
+}
+

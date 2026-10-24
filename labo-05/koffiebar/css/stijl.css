@@ -1,0 +1,196 @@
+/* stijl.css - labo 5, koffiebar (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+--papier: #f4efe6;
+--kaart: white;
+--inkt: #2b2b2b;
+--gedempt: #6b6b6b;
+--balk: #2f241d;
+--tekst: #f4efe6;
+--accent: #c8742e;
+}
+
+/* === your rules === */
+header {grid-area: kop;}
+aside {grid-area: zijbalk;}
+main {grid-area: inhoud;}
+footer {grid-area: onderbalk;}
+
+body
+{
+    display:grid;
+    grid-template-columns: 16rem 1fr;
+    grid-template-areas:
+    "kop kop"
+    "zijbalk inhoud"
+    "onderbalk onderbalk";
+    background:var(--papier);
+    font-family: Verdana;
+}
+
+
+/*-----------------header--------------*/
+
+header
+{
+    background:var(--balk);
+    display:flex;
+    justify-content: space-between;
+}
+
+nav ul
+{
+    list-style: none;
+    display:flex;
+    padding-right:1rem;
+}
+a
+{
+    text-decoration: none;
+    padding-left:0.6rem;
+}
+.logo
+{
+    padding-top:1rem;
+    color: var(--accent);
+    font-size: 1.25rem;
+    padding-left:1.4rem;
+}
+ul a
+{
+    color:var(--tekst);
+    font-size:0.95rem;
+    padding-left:1.8rem;
+}
+ul a:hover,
+ul a:active
+{
+    color: var(--accent);
+}
+
+
+/*----------------main--------------*/
+
+aside
+{
+    padding: 2rem;
+    border-right: 1px solid var(--gedempt);
+    font-size:0.875rem;
+}
+aside p
+{
+    padding-top:0.5rem;
+    color: var(--gedempt);
+    font-size:0.6rem;
+    line-height: 1rem;
+    padding-bottom: 0.9rem;
+}
+
+main
+{
+    padding:2rem;
+}
+
+main ul
+{
+    list-style: none;
+}
+.intro
+{
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+    color:var(--gedempt);
+    font-size:0.875rem;
+}
+.kaarten
+{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:1.5rem;
+}
+
+.kaart
+{
+    background:var(--kaart);
+    position:relative;
+    padding:1.5rem;
+    border-radius:0.5rem;
+    box-shadow: 1rem light black;
+    height:auto; 
+}
+.tekst
+{
+    display:flex;
+    flex-direction: column;
+    padding-top:2rem;
+}
+.kaart:not(:has(img))
+{
+    border-top: 0.5rem solid var(--accent);
+}
+.kaart img
+{
+    height:50%;
+    width:100%;
+    aspect-ratio:4/4;
+    object-fit: cover; 
+}
+.kaart:has(img)
+{
+    overflow:hidden;
+    width:100%;
+    padding: 0rem;
+    justify-content: space-between;
+}
+.badge
+{
+    background:var(--accent);
+    color: var(--tekst);
+    position:absolute;
+    top:0.75rem;
+    right:0.75rem;
+    font-size:0.75rem;
+    text-transform: uppercase;
+    border-radius:1rem;
+    padding: 0.25rem 0.75rem;
+}
+.tekst
+{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    position:relative;
+}
+.tekst h2
+{
+    position:absolute;
+    top:1rem;
+    left:1rem;
+}
+
+div :nth-child(2)
+{
+    position:absolute;
+    top:4rem;
+    left:1rem;
+    word-spacing:0.2rem;
+}
+.prijs
+{
+    margin-top: auto;
+    color: var(--accent);
+}
+
+
+
+/*----------------footer--------------*/
+
+footer
+{
+    background:var(--balk);
+    color:var(--tekst);
+    text-align: center;
+    height:3rem;
+    padding-top:1rem;
+}
