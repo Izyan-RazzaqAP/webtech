@@ -1,0 +1,136 @@
+/* stijl.css - labo 6, affiche (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+--cirkelR:#d6341c;
+--vierkantD:#1d1d1b;
+--pagina:#1d1d1b;
+--affiche:#2554ab;
+--tekst:#fff8ee ;
+--cirkelG:#ffc83d;
+}
+
+/* === base: narrow screens first === */
+
+/* === media queries: below the base rules === */
+
+body
+{
+    background:var(--pagina);
+    
+}
+.affiche
+{
+    background:var(--affiche);
+    color:var(--tekst);
+    font-family:Georgia;
+    position: relative;
+    margin:2rem 1rem;
+    width:min(28rem, 100% - 2rem);
+    aspect-ratio:1/1.4;
+    padding:clamp(1.5rem,6vw,3rem);
+    display:flex;
+    place-self: center;
+    flex-direction: column;
+    justify-content: center;
+}
+h1
+{
+    font-size:clamp(2rem,8vw,3.5rem);
+    line-height:1.05;
+}
+p
+{
+    font-size:0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+.sticker
+{
+    height:clamp(4rem,14vh,7rem);
+    width:clamp(4rem,14vw,7rem);
+    display:grid;
+    place-items:center;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+.datum
+{
+    background:white;
+    color:black;
+    position: absolute;
+    top:1rem;
+    left:1rem;
+    z-index: 1;
+    text-align: center;
+}
+.prijs
+{
+    background:var(--cirkelG);
+    color:black;
+    font-size: 1.25rem;
+    border-radius:50%;
+    position: absolute;
+    top:2.5rem;
+    left:2.5rem;
+    z-index: 3;
+    text-align: center;
+}
+.logo
+{
+    background-color: var(--vierkantD);
+    font-size: 1.25rem;
+    position: absolute;
+    top:4rem;
+    left:4rem;
+    z-index: 2;
+    text-align: center;
+}
+.uitverkocht
+{
+    background-color: var(--cirkelR);
+    border-radius:50%;
+    position: absolute;
+    top:5.5rem;
+    left:5.5rem;
+    z-index: 4;
+    text-align: center;
+}
+@media(min-width:800px)
+{
+    .logo
+    {
+        top:auto;
+        left:auto;
+        bottom:6rem;
+        right:6rem;
+    }
+    .uitverkocht
+    {
+        top:auto;
+        left:auto;
+        right:3rem;
+        bottom:3rem;
+    }
+}
+@media(min-width:1000px)
+{
+    .prijs
+    {
+        left:auto;
+        right:2rem;
+        top:2rem;
+    }
+    .logo
+    {
+        bottom:2rem;
+        right:auto;
+        left:2rem
+    }
+    .uitverkocht
+    {
+        right:2rem;
+        bottom:2rem;
+    }
+}
+

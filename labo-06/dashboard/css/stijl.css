@@ -1,0 +1,111 @@
+/* stijl.css - labo 6, dashboard (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+--papier: #f3f1ec;
+--titel:#1f2933;
+--grafiek:#2c6e8f;
+--omzet: #c8742e;
+--bezoekers:#3b7a2a;
+--agenda: #6b4fa3;
+--taken:#b2323a;
+--weer:#e0b43a;
+--weerTekst:#1f2933;
+}
+
+/* === base: narrow screens first === */
+
+/* === media queries: below the base rules === */
+
+
+.dashboard
+{
+    height:100vh;
+    display:grid;
+    gap:1rem;
+    margin:1rem;
+    background:var(--papier);
+}
+.tegel
+{
+    border-radius:0.5rem;
+    padding:1rem;
+    color:white;
+    font-weight:bold;
+    font-family:Verdana;
+    line-height:1.4rem;
+    min-height:6rem;
+}
+
+
+@media(min-width:800px)
+{
+     .dashboard
+    {
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(5,1fr);
+    } 
+    .titel,
+    .grafiek,
+    .weer
+    {
+        grid-column: 1/3;
+    } 
+    
+}
+@media(min-width:1200px)
+{
+     .dashboard
+    {
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(3,1fr);
+    } 
+    .titel,
+    .weer
+    {
+        grid-column: 1/5;
+    } 
+    .grafiek
+    {
+        grid-column:1/3;
+        grid-row:2/4;
+        grid-column-start:1;
+    }
+    .bezoekers
+    {
+        grid-column:3/4;
+        grid-row:3/4;
+    }
+    
+}
+
+.titel
+{
+    background:var(--titel);
+    line-height:1.5rem;
+}
+.grafiek
+{
+    background:var(--grafiek);
+}
+.omzet
+{
+    background:var(--omzet);
+}
+.bezoekers
+{
+    background:var(--bezoekers);
+}
+.agenda
+{
+    background:var(--agenda);
+}
+.taken
+{
+    background:var(--taken);
+}
+.weer
+{
+    background:var(--weer);
+    color:var(--weerTekst);
+}
