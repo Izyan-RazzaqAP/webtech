@@ -1,0 +1,154 @@
+/* stijl.css - labo 7, frituur (reset.css is linked before this file) */
+
+/* === tokens: five colour roles in hsl (7.7) === */
+:root {
+    --oppervlak: hsl(45 60% 96%);
+    --inkt: hsl(25 30% 12%);
+    --gedempt: hsl(25 10% 40%);
+    --accent: hsl(22 85% 40%);
+    --lijn: hsl(40 25% 80%);
+
+    --text-s:0.8rem;  --text-m:1rem;  --text-l:1.25rem;
+    --text-xl: 1.563rem;  --text-xxl: 1.953rem;  --text-xxxl:2.441rem;
+
+    --space-xs:0.25rem;  --space-s:0.5rem; --space-m:1rem; 
+    --space-l:2rem;  --space-xl:4rem;
+}
+
+/* === base === */
+
+body
+{
+    font-family: Verdana;
+    line-height: 1.5;
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100svh;
+}
+.naam,h2
+{
+    font-family:Georgia;
+}
+header
+{
+    text-align: center;
+    margin-top:var(--space-xl);
+    margin-bottom: var(--space-l);
+}
+/*HEADER*/
+.naam
+{
+    font-size:var(--text-xxl);
+    line-height: 1.1;
+    color: var(--accent);
+}
+.slogan
+{
+    color:var(--gedempt);
+    margin-top:var(--space-xs);
+}
+
+/*MAIN*/
+
+main
+{
+    
+    max-width: 56rem;
+    place-self:center;
+    margin-left:var(--space-m);
+    margin-bottom:var(--space-l);
+    display:grid;
+    grid-column: 1/-1;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 1fr;
+    gap:var(--space-l);
+    
+}
+ul
+{
+    margin:0;
+    padding:0;
+}
+
+h2
+{
+    font-size: var(--text-l);
+    line-height: 1.2;
+    border-bottom: 2px solid var(--accent);
+    padding:var(--space-xs);
+    padding-bottom:var(--space-s);
+}
+li
+{
+    display:flex;
+    justify-content: space-between;
+    margin: var(--space-s) auto;
+    border-bottom: 1px dotted var(--gedempt);
+}
+.prijs
+{
+    font-weight: bold;
+    color:var(--accent);
+}
+
+.info
+{
+    grid-column: 1/4;
+    border: 1px dotted var(--gedempt);
+    border-radius: var(--space-s);
+    padding: var(--space-m);
+    font-size:1.2rem;
+}
+.gedempt
+{
+    font-size:var(--text-s);
+    color:var(--gedempt);
+}
+
+.label
+{
+    background-color: var(--accent);
+    color:var(--oppervlak);
+    font-size: var(--text-s);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: auto var(--space-s);
+    border-radius: var(--space-xs);
+    margin-left:var(--space-s);
+    font-style: normal;
+}
+.info p
+{
+    margin-top:var(--space-s)
+}
+
+
+/*FOOTER*/
+footer
+{
+    border-top: 1px dotted var(--gedempt);
+    margin: var(--space-l) auto;
+    text-align: center;
+    color:var(--gedempt);
+    font-size: var(--text-s);
+    display:flex;
+    width:100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* === dark mode: tokens only (7.9) === */
+
+@media(prefers-color-scheme: dark)
+{
+    :root
+    {
+        --oppervlak: hsl(25 15% 10%);
+        --inkt: hsl(40 30% 92%);
+        --gedempt: hsl(30 10% 70%);
+        --accent: hsl(32 90% 62%);
+        --lijn: hsl(25 10% 28%);
+    }
+}
