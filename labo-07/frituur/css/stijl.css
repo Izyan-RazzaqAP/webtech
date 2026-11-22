@@ -127,15 +127,12 @@ li
 /*FOOTER*/
 footer
 {
-    border-top: 1px dotted var(--gedempt);
-    margin: var(--space-l) auto;
+    border-top: 1px dotted var(--gedempt);   
     text-align: center;
     color:var(--gedempt);
     font-size: var(--text-s);
-    display:flex;
     width:100%;
-    flex-direction: column;
-    justify-content: center;
+    padding: var(--space-l);
 }
 
 
