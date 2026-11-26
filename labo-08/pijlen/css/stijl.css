@@ -1,0 +1,64 @@
+/* stijl.css - labo 8, pijlen (reset.css is linked before this file) */
+
+/* === tokens: colours, the three shapes, one duration and one curve === */
+:root {
+--pijl-rechts: polygon(0 0, 60% 0, 100% 50%, 60% 100%, 0 100%, 40% 50%);
+--vierkant:  polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);--pijl-links:  polygon(40% 0, 100% 0, 60% 50%, 100% 100%, 40% 100%, 0 50%);
+--pijl-links:  polygon(40% 0, 100% 0, 60% 50%, 100% 100%, 40% 100%, 0 50%);
+
+--papier: hsl(47 20% 92%);
+--oranje: hsl(28 78% 58%);
+--groen: hsl(113 62% 64%);
+--blauw: hsl(190 60% 65%);
+
+--duur: 6s;
+--curve: ease-in-out;
+
+}
+
+
+
+/* === the grid in the middle of the window (4.7) === */
+.rooster
+{
+    align-content:center;
+    place-content: center;
+    display: grid;
+    height:100vh;
+    grid-template-columns: repeat(3,10rem);
+    grid-template-rows: repeat(3,10rem);
+    background-color: var(--papier);
+    gap:3rem;
+}
+/* === the tiles: a shape and a colour that change together (8.4, 8.6) === */
+.tegel
+{
+    background-color: var(--oranje);
+    height:8rem;
+    width:8rem;
+    animation: animatie var(--duur) var(--curve) infinite;
+}
+.tegel:nth-child(2),.tegel:nth-child(4),.tegel:nth-child(6),.tegel:nth-child(8)
+{
+    background-color: var(--groen);
+    animation-delay: calc(var(--duur) / -3);
+}
+
+/* === keyframes: three stops === */
+
+@keyframes animatie
+{
+    0%, 100% { clip-path: var(--pijl-rechts); background-color:var(--oranje) ; }
+    33%      { clip-path: var(--vierkant); background:var(--groen) ; }
+    66%      { clip-path: var(--pijl-links); background-color:var(--blauw) ; }
+}
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+}

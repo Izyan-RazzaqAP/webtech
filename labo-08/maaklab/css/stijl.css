@@ -1,0 +1,212 @@
+/* stijl.css - labo 8, maaklab (reset.css and fonts.css are linked before this file) */
+
+/* === tokens: colours, fonts, sizes, and one duration and one curve (8.1) === */
+:root 
+{
+    --oppervlak: hsl(210 20% 97%);
+    --inkt: hsl(215 30% 14%);
+    --gedempt: hsl(215 10% 42%);
+    --accent: hsl(215 70% 40%);
+    --accentD: hsl(215 70% 30%);
+    --lijn: hsl(210 15% 84%);
+
+    --hoek:0.5rem;
+
+    --duur: 200ms;
+
+    --curve: ease-out;
+
+    --text-s:0.8rem;  --text-m:1rem;  --text-l:1.25rem;
+    --text-xl: 1.563rem;  --text-xxl: 1.953rem;  --text-xxxl:2.441rem;
+
+    --space-xs:0.25rem;  --space-s:0.5rem; --space-m:1rem; 
+    --space-l:2rem;  --space-xl:4rem;
+
+  --font-heading: "Fraunces", Verdana, serif;
+  --font-text: "Atkinson Hyperlegible", Georgia serif;
+}
+
+
+
+/* === base === */
+
+body
+{
+    font-family:var(--font-text);
+    background:var(--oppervlak);
+}
+ul
+{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+a
+{
+    text-decoration: none;
+    color:black;
+}
+
+
+/* === header: links with an underline that grows from the left (8.3, 8.6) === */
+
+header
+{
+    display:flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--lijn);
+}
+.naam
+{
+    font-size:var(--text-l);
+    font-weight: bold;
+    padding: var(--space-m) var(--space-l);
+}
+nav ul
+{
+    display: flex;
+    gap:var(--space-m);
+    padding: var(--space-m) var(--space-l);
+}
+nav ul li a
+{
+    color:var(--inkt);
+    font-weight: bold;
+    margin: var(--space-xs) auto;
+    position:relative; 
+}
+nav ul li a:hover::after,nav ul li a:focus::after
+{
+    transform: scaleX(1);
+}
+nav ul li a::after
+{
+    transition: var(--duur) var(--curve);
+    content:"";
+    display:block;
+    width:100%;
+    height:2px;
+    left:0;
+    bottom:0;
+    border-bottom: 2px solid var(--accent);  
+    transform: scaleX(0);
+    transform-origin:0;
+}
+
+
+/* === cards: transition on the base state (8.2), lift on hover and focus-within === */
+main
+{
+    max-width:80rem;
+    padding: var(--space-xl) var(--space-l);
+    align-items: center;
+    margin:0 auto;
+}
+h2
+{
+    font-size:var(--text-xl);
+    margin-bottom:var(--space-l);
+    border-bottom: clamp(0.25rem,3rem) solid var(--accent);
+}
+h2::after
+{
+    content:"";
+    border-bottom: 0.25rem solid var(--accent);
+    width:100%;
+    height:1px;
+    display:block;
+    left:0px;
+    bottom:0px;
+    margin-bottom:var(--space-s);
+    transform-origin: 0;
+    transform:scaleX(0.05)
+}
+
+.kaarten
+{
+    min-width:15rem;
+    display:grid;
+    gap:var(--space-l);
+    grid-template-columns: repeat(4,1fr);
+}
+.kaart
+{
+    background: white;
+    border: 1px solid var(--gedempt);
+    border-radius: var(--hoek);
+    padding:var(--space-m);
+    display:flex;
+    flex-direction: column;
+    gap:var(--space-s);
+    position: relative;
+    min-height:15rem;
+    transition: var(--duur) var(--curve);
+}
+.kaart:hover,.kaart:focus-within
+{
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.15);
+}
+.kaart p:not(.datum)
+{
+    flex-grow:1;
+}
+.datum
+{
+    font-size: var(--text-s);
+    color:var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+h3
+{
+    font-size: var(--text-l);
+    line-height: 1.3;
+    color:var(--gedempt);
+}
+.knop
+{
+    left:0.8rem;
+    bottom:0.5rem;
+    position: absolute;
+    color:var(--oppervlak);
+    background-color:var(--accent);
+    font-weight: bold;
+    padding: var(--space-s) var(--space-l);
+    border-radius: var(--hoek);
+    transition: var(--duur) var(--curve);
+}
+.knop:hover,.knop:focus
+{
+    color:var(--accentD);
+}
+.knop:active::after
+{
+    transform:scale(0.97);
+}
+/* === hover only where hovering exists (6.9) === */
+@media (hover: hover) {
+
+}
+
+/* === footer === */
+
+footer
+{
+    border-top: 1px solid var(--gedempt);
+    padding: var(--space-m) var(--space-l);
+    color:var(--gedempt);
+    font-size: var(--text-s);    
+}
+
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+}

@@ -1,0 +1,161 @@
+/* stijl.css - labo 8, vertrekbord (reset.css and fonts.css are linked before this file) */
+
+/* === tokens: a dark board === */
+:root {
+    --oppervlak: hsl(210 30% 10%);
+    --inkt: hsl(45 30% 92%);
+    --gedempt: hsl(210 10% 65%);
+    --accent: hsl(45 95% 55%);
+    --lijn: hsl(210 15% 25%);
+
+    --font-all: "Atkinson Hyperlegible", Verdana;
+
+    --duur: 200ms;
+    --curve: ease-out;
+
+    --text-s:0.8rem;  --text-m:1rem;  --text-l:1.25rem;
+    --text-xl: 1.563rem;  --text-xxl: 1.953rem;  --text-xxxl:2.441rem;
+
+    --space-xs:0.25rem;  --space-s:0.5rem; --space-m:1rem; 
+    --space-l:2rem;  --space-xl:4rem;
+}
+
+/* === base: header, list, footer at the bottom (4.7) === */
+
+ol
+{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+body
+{
+    background:var(--oppervlak);
+    color:white;
+    min-height: 100svh;
+    padding:var(--space-l);
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.naam
+{
+    font-size: var(--text-s);
+    color:var(--gedempt);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+h1
+{
+    font-size:var(--text-xxl);
+    font-weight: bold;
+    line-height: 1.1;
+    margin:var(--space-s) auto;
+}
+.live
+{
+    font-size: var(--text-s);
+    color:var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+footer
+{
+    margin-top:var(--space-l);
+    color: var(--gedempt);
+    font-size: var(--text-s);
+}
+
+/* === the live dot: a pseudo-element that pulses (8.4, 8.6) === */
+.live::before
+{
+    content:"";
+    display:inline-block;
+    height:0.5em;
+    width:0.5em;
+    border-bottom: 0.6em solid var(--accent);
+    border-radius: 50%;
+    margin-right:var(--space-xs);
+    animation: pulseren 1.5s ease-in-out infinite;
+}
+@keyframes pulseren
+{
+    0%, 100% {opacity:1;}
+    50%      {opacity: 0.4;}
+}
+/* === the departures === */
+.vertrekken
+{
+    margin-top:var(--space-l);
+    flex-grow:1;
+}
+.vertrek
+{
+    display:grid;
+    grid-template-columns: 6rem 1fr auto;
+    margin: var(--space-m) auto;
+    border-bottom: 1px solid var(--gedempt);
+    padding-bottom:var(--space-m);
+}
+.tijd
+{
+    font-size:var(--text-xl);
+    font-weight: bold;
+}
+.naar
+{
+    font-size:var(--text-l);
+}
+.status
+{
+    padding-top:0.4rem;
+    font-size: var(--text-s);
+    color:var(--gedempt);
+}
+.vertrokken
+{
+    opacity: 0.45;
+}
+.extra
+{
+    color:var(--accent);
+    font-weight: bold;
+}
+
+.nieuw
+{
+    transition: 300ms var(--curve);
+    animation-fill-mode: both;
+}
+/* === the loading ring and the extra departure (8.4) === */
+
+.laden::before
+{
+    content:"";
+    display:inline-block;
+    height:1em;
+    width:1em;
+    border:3px solid var(--lijn);
+    border-top: 5px solid var(--accent);
+    border-radius: 50%;
+    margin-right:var(--space-xs);
+    animation: spin 1s linear infinite;
+}
+@keyframes spin
+{
+    to {transform: rotate(360deg);}
+}
+
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+}
